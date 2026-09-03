@@ -146,3 +146,13 @@
     color: var(--color-foreground);
   }
 }
+
+@utility glass-card {
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+@utility sidebar-active {
+  background: linear-gradient(135deg, color-mix(in oklab, var(--primary) 22%, transparent), color-mix(in oklab, var(--accent) 14%, transparent));
+  border-left: 2px solid var(--primary);
+}
