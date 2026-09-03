@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "CampusOS — One app for campus life" },
+      { name: "description", content: "CampusOS unifies collaboration finder, transport, hostel, mentorship, resources, maps and academic risk tracking into one super-app." },
+      { name: "author", content: "CampusOS" },
+      { property: "og:title", content: "CampusOS — One app for campus life" },
+      { property: "og:description", content: "Collaboration finder, transport, hostel, mentorship, resources, maps and academic risk tracking in one app." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@CampusOS" },
     ],
     links: [
       {
