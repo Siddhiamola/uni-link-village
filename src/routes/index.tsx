@@ -825,6 +825,447 @@ function HostelHub() {
   );
 }
 
+// ---------------- Senior Bridge ----------------
+
+const SENIOR_STEPS: { label: string; options: string[] }[] = [
+  { label: "Branch", options: ["CSE", "ECE", "ME"] },
+  { label: "Year", options: ["1st", "2nd", "3rd", "4th"] },
+  {
+    label: "Semester",
+    options: ["Sem 1", "Sem 2", "Sem 3", "Sem 4", "Sem 5", "Sem 6", "Sem 7", "Sem 8"],
+  },
+  { label: "Subject", options: ["DBMS", "Operating Systems", "DSA"] },
+];
+
+const SENIOR_RESOURCES: {
+  id: string;
+  title: string;
+  desc: string;
+  meta: string;
+  icon: typeof FileText;
+}[] = [
+  { id: "pyq", title: "Previous Year Question Papers", desc: "Last 5 years, solved & unsolved sets", meta: "12 PDFs", icon: FileText },
+  { id: "prof", title: "Prof Reviews", desc: "Grading patterns, attendance strictness, viva tips", meta: "28 reviews", icon: Users },
+  { id: "lab", title: "Lab Manuals", desc: "Step-by-step experiments with viva answers", meta: "8 manuals", icon: BookOpen },
+  { id: "notes", title: "Handwritten Notes", desc: "Scanned toppers' notes, unit-wise", meta: "15 scans", icon: FileText },
+];
+
+function SeniorBridge() {
+  const [selections, setSelections] = useState<(string | null)[]>([null, null, null, null]);
+  const [downloaded, setDownloaded] = useState<string | null>(null);
+
+  function select(step: number, value: string) {
+    setSelections((prev) => {
+      const next = prev.slice(0, step);
+      next[step] = value;
+      while (next.length < 4) next.push(null);
+      return next;
+    });
+    setDownloaded(null);
+  }
+
+  const allSelected = selections.every(Boolean);
+
+  return (
+    <div className="mx-auto max-w-6xl px-6 py-8">
+      <header className="mb-6">
+        <h2 className="text-2xl font-bold tracking-tight">📚 Senior Bridge</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Notes, papers, and prof intel — passed down from seniors, filtered to your exact semester.
+        </p>
+      </header>
+
+      {/* Nested filter selector */}
+      <div className="rounded-2xl border border-border bg-card/70 glass-card p-5 space-y-4">
+        {SENIOR_STEPS.map((step, i) => {
+          const locked = i > 0 && !selections[i - 1];
+          return (
+            <div key={step.label} className={cn(locked && "opacity-40 pointer-events-none")}>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                Step {i + 1} · {step.label}
+                {locked && <span className="ml-2 normal-case font-normal">— select {SENIOR_STEPS[i - 1]!.label} first</span>}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {step.options.map((opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => select(i, opt)}
+                    className={cn(
+                      "rounded-lg border px-3.5 py-1.5 text-sm font-medium transition-all",
+                      selections[i] === opt
+                        ? "border-primary bg-primary/15 text-primary"
+                        : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Resources */}
+      <h3 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        {allSelected
+          ? `Resources · ${selections[0]} · ${selections[1]} Year · ${selections[2]} · ${selections[3]}`
+          : "Resources — complete all 4 steps above"}
+      </h3>
+      {!allSelected ? (
+        <div className="rounded-2xl border border-dashed border-border bg-card/40 px-6 py-12 text-center">
+          <GraduationCap className="mx-auto mb-3 h-8 w-8 text-muted-foreground" />
+          <p className="text-sm text-muted-foreground">
+            Pick your Branch, Year, Semester and Subject to unlock senior-shared material.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {SENIOR_RESOURCES.map((r) => {
+            const Icon = r.icon;
+            return (
+              <div key={r.id} className="rounded-2xl border border-border bg-card/70 glass-card p-5 transition-all hover:border-primary/40">
+                <div className="flex items-start gap-3">
+                  <div className="h-11 w-11 shrink-0 rounded-xl bg-primary/15 grid place-items-center">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-semibold text-foreground">{r.title}</h4>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{r.desc}</p>
+                    <p className="mt-1 text-[11px] text-emerald">{r.meta}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setDownloaded(r.id)}
+                  className={cn(
+                    "mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold transition-colors",
+                    downloaded === r.id
+                      ? "bg-emerald/15 text-emerald border border-emerald/30"
+                      : "bg-primary text-primary-foreground hover:bg-primary/90",
+                  )}
+                >
+                  {downloaded === r.id ? (
+                    <>
+                      <CheckCircle2 className="h-4 w-4" /> Downloaded
+                    </>
+                  ) : (
+                    <>
+                      <Download className="h-4 w-4" /> Download / View
+                    </>
+                  )}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ---------------- Resource Sharing ----------------
+
+const EQUIPMENT: { id: string; name: string; owner: string; dept: string; available: boolean }[] = [
+  { id: "hdmi", name: "HDMI Cable", owner: "Rohan Patil", dept: "CSE", available: true },
+  { id: "draw", name: "Engineering Drawing Instruments", owner: "Meera Joshi", dept: "ME", available: true },
+  { id: "dmm", name: "Digital Multimeter", owner: "Aditya Rao", dept: "ECE", available: true },
+  { id: "arduino", name: "Arduino Uno Kit", owner: "Sneha Kulkarni", dept: "ECE", available: true },
+];
+
+function ResourceSharing() {
+  const [borrowItem, setBorrowItem] = useState<(typeof EQUIPMENT)[number] | null>(null);
+
+  return (
+    <div className="mx-auto max-w-6xl px-6 py-8">
+      <header className="mb-6">
+        <h2 className="text-2xl font-bold tracking-tight">🔄 Resource Sharing</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Peer-to-peer equipment borrowing — request it, scan the QR, return it.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {EQUIPMENT.map((item) => (
+          <div key={item.id} className="rounded-2xl border border-border bg-card/70 glass-card p-5 transition-all hover:border-primary/40">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="h-11 w-11 rounded-xl bg-primary/15 grid place-items-center">
+                  <RefreshCw className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">{item.name}</h4>
+                  <p className="text-xs text-muted-foreground">
+                    {item.owner} · {item.dept} Dept
+                  </p>
+                </div>
+              </div>
+              {item.available && (
+                <Badge className="border bg-emerald/15 text-emerald border-emerald/30">Available</Badge>
+              )}
+            </div>
+            <button
+              onClick={() => setBorrowItem(item)}
+              className="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Request to Borrow
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <Dialog open={!!borrowItem} onOpenChange={(o) => !o && setBorrowItem(null)}>
+        <DialogContent className="bg-card border-border text-card-foreground max-w-sm">
+          {borrowItem && (
+            <>
+              <DialogHeader>
+                <DialogTitle>Pickup instructions</DialogTitle>
+                <DialogDescription>
+                  {borrowItem.name} · from {borrowItem.owner} ({borrowItem.dept})
+                </DialogDescription>
+              </DialogHeader>
+              <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
+                <li>Meet the owner at the Innovation Lab, 2nd floor.</li>
+                <li>Show this QR check-out code at pickup.</li>
+                <li>Return within 48 hours to keep your borrow score.</li>
+              </ol>
+              <div className="mx-auto flex flex-col items-center gap-2 rounded-xl border border-border bg-background/60 p-5">
+                <QrCode className="h-28 w-28 text-foreground" strokeWidth={1.2} />
+                <span className="font-mono text-xs text-muted-foreground tracking-widest">
+                  CMP-CHK-{borrowItem.id.toUpperCase()}-7291
+                </span>
+              </div>
+              <button
+                onClick={() => setBorrowItem(null)}
+                className="w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+              >
+                Got it
+              </button>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
+// ---------------- Campus Map & Cleanliness ----------------
+
+const ZONES: { id: string; name: string; crowd: "High" | "Moderate" | "Low"; score: number; note: string }[] = [
+  { id: "cse", name: "CSE Block", crowd: "Moderate", score: 88, note: "Labs busy, corridors tidy" },
+  { id: "lib", name: "Central Library", crowd: "Low", score: 94, note: "Quiet floors available" },
+  { id: "gym", name: "Campus Gym", crowd: "High", score: 71, note: "Peak hours 5–7 PM" },
+  { id: "food", name: "Food Court", crowd: "Moderate", score: 82, note: "Lunch rush expected 1 PM" },
+];
+
+const GRIEVANCE_TYPES = ["Overflowing Bins", "Broken Projector", "Potholes", "Water Leakage"];
+
+function crowdColor(crowd: string) {
+  if (crowd === "High") return "bg-destructive/15 text-destructive border-destructive/30";
+  if (crowd === "Moderate") return "bg-amber-400/15 text-amber-300 border-amber-400/30";
+  return "bg-emerald/15 text-emerald border-emerald/30";
+}
+
+function CampusMap() {
+  const [zone, setZone] = useState(ZONES[3]!);
+  const [grievanceOpen, setGrievanceOpen] = useState(false);
+  const [grievance, setGrievance] = useState<string | null>(null);
+  const [reported, setReported] = useState(false);
+
+  return (
+    <div className="mx-auto max-w-6xl px-6 py-8">
+      <header className="mb-6">
+        <h2 className="text-2xl font-bold tracking-tight">🗺️ Campus Map & Cleanliness</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Live crowd levels and cleanliness scores across campus zones.
+        </p>
+      </header>
+
+      {/* Zone selector */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+        {ZONES.map((z) => (
+          <button
+            key={z.id}
+            onClick={() => setZone(z)}
+            className={cn(
+              "rounded-2xl border p-4 text-left transition-all",
+              zone.id === z.id
+                ? "border-primary bg-primary/10 shadow-lg shadow-primary/10"
+                : "border-border bg-card/70 glass-card hover:border-primary/40",
+            )}
+          >
+            <MapPin className={cn("h-5 w-5 mb-2", zone.id === z.id ? "text-primary" : "text-muted-foreground")} />
+            <p className="text-sm font-semibold text-foreground">{z.name}</p>
+            <Badge className={cn("mt-2 border", crowdColor(z.crowd))}>{z.crowd}</Badge>
+          </button>
+        ))}
+      </div>
+
+      {/* Zone detail */}
+      <div className="rounded-2xl border border-border bg-card/70 glass-card p-6">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-bold text-foreground">{zone.name}</h3>
+            <p className="text-sm text-muted-foreground">{zone.note}</p>
+            <div className="mt-3 flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground">Crowd level:</span>
+              <Badge className={cn("border", crowdColor(zone.crowd))}>{zone.crowd}</Badge>
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="flex items-center gap-2">
+              <Gauge className="h-5 w-5 text-emerald" />
+              <span className="text-3xl font-bold text-foreground">{zone.score}</span>
+              <span className="text-sm text-muted-foreground">/100</span>
+            </div>
+            <p className="text-xs text-muted-foreground">Cleanliness score</p>
+          </div>
+        </div>
+        <div className="mt-4 h-2.5 rounded-full bg-secondary/60 overflow-hidden">
+          <div
+            className={cn("h-full rounded-full", zone.score >= 85 ? "bg-emerald" : zone.score >= 75 ? "bg-primary" : "bg-amber-400")}
+            style={{ width: `${zone.score}%` }}
+          />
+        </div>
+        <button
+          onClick={() => {
+            setGrievanceOpen(true);
+            setGrievance(null);
+            setReported(false);
+          }}
+          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+        >
+          <AlertTriangle className="h-4 w-4" />
+          Report Campus Grievance
+        </button>
+      </div>
+
+      <Dialog open={grievanceOpen} onOpenChange={setGrievanceOpen}>
+        <DialogContent className="bg-card border-border text-card-foreground max-w-sm">
+          <DialogHeader>
+            <DialogTitle>Report a grievance — {zone.name}</DialogTitle>
+            <DialogDescription>Pick an issue type and we'll route it to campus maintenance.</DialogDescription>
+          </DialogHeader>
+          {reported ? (
+            <div className="flex items-center gap-2 rounded-lg border border-emerald/40 bg-emerald/10 px-4 py-3 text-sm text-emerald">
+              <CheckCircle2 className="h-4 w-4" />
+              {grievance} reported at {zone.name}. Ticket created!
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-2">
+              {GRIEVANCE_TYPES.map((g) => (
+                <button
+                  key={g}
+                  onClick={() => setGrievance(g)}
+                  className={cn(
+                    "flex items-center gap-2.5 rounded-lg border px-4 py-2.5 text-sm font-medium text-left transition-all",
+                    grievance === g
+                      ? "border-primary bg-primary/15 text-primary"
+                      : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  <Trash2 className="h-4 w-4 shrink-0" />
+                  {g}
+                </button>
+              ))}
+              <button
+                disabled={!grievance}
+                onClick={() => setReported(true)}
+                className="mt-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Submit report
+              </button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+
+// ---------------- Academic Risk Detector ----------------
+
+function RiskDetector() {
+  const [booked, setBooked] = useState(false);
+
+  const metrics = [
+    { label: "Attendance", value: "68%", pct: 68, danger: true, hint: "Below 75% threshold" },
+    { label: "Internal Marks", value: "14/30", pct: 47, danger: true, hint: "DBMS mid-sem" },
+    { label: "Assignment Completion", value: "72%", pct: 72, danger: false, hint: "2 pending submissions" },
+  ];
+
+  return (
+    <div className="mx-auto max-w-6xl px-6 py-8">
+      <header className="mb-6">
+        <h2 className="text-2xl font-bold tracking-tight">📊 Academic Risk Detector</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Early-warning analysis of attendance, marks, and submissions.
+        </p>
+      </header>
+
+      {/* Warning banner */}
+      <div className="mb-6 flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-4">
+        <AlertTriangle className="h-5 w-5 shrink-0 text-destructive mt-0.5" />
+        <div>
+          <p className="text-sm font-semibold text-destructive">⚠️ Attention Required</p>
+          <p className="text-xs text-destructive/80">
+            Current attendance &amp; internal pattern flags risk in DBMS (Database Management Systems).
+          </p>
+        </div>
+      </div>
+
+      {/* Metrics */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        {metrics.map((m) => (
+          <div key={m.label} className="rounded-2xl border border-border bg-card/70 glass-card p-5">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{m.label}</p>
+              <BarChart3 className={cn("h-4 w-4", m.danger ? "text-destructive" : "text-emerald")} />
+            </div>
+            <p className={cn("mt-2 text-3xl font-bold", m.danger ? "text-destructive" : "text-foreground")}>
+              {m.value}
+            </p>
+            <div className="mt-3 h-2 rounded-full bg-secondary/60 overflow-hidden">
+              <div
+                className={cn("h-full rounded-full", m.danger ? "bg-destructive" : "bg-emerald")}
+                style={{ width: `${m.pct}%` }}
+              />
+            </div>
+            <p className="mt-2 text-xs text-muted-foreground">{m.hint}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Advisor note + action */}
+      <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6">
+        <div className="flex items-start gap-3">
+          <Lightbulb className="h-5 w-5 shrink-0 text-primary mt-0.5" />
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-foreground">Advisor recommendation</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Attend the next 4 DBMS lectures consecutively to cross the 75% attendance bar, and submit the
+              pending ER-diagram assignment by Friday. A peer tutor from 4th year can revise Normalization
+              and Indexing with you before the end-sem.
+            </p>
+            <button
+              onClick={() => setBooked(true)}
+              disabled={booked}
+              className={cn(
+                "mt-4 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors",
+                booked
+                  ? "bg-emerald/15 text-emerald border border-emerald/30 cursor-default"
+                  : "bg-primary text-primary-foreground hover:bg-primary/90",
+              )}
+            >
+              <CalendarCheck className="h-4 w-4" />
+              {booked ? "Peer Tutor booked — Sat 11 AM, Library Room 3" : "Book Peer Tutor"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PlaceholderModule({ tab }: { tab: { label: string; emoji: string; icon: typeof Users } }) {
   const Icon = tab.icon;
   return (
