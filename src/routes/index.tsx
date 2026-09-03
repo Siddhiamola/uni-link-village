@@ -34,6 +34,8 @@ import {
   CalendarCheck,
   Gauge,
   Trash2,
+  Bell,
+  Award,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
@@ -84,6 +86,7 @@ type Student = {
   phone: string;
   linkedin: string;
   github: string;
+  honor?: string;
 };
 
 const STUDENTS: Student[] = [
@@ -99,6 +102,7 @@ const STUDENTS: Student[] = [
     phone: "+91 98200 11234",
     linkedin: "in/aaravmehta",
     github: "@aaravmehta",
+    honor: "SIH Finalist",
   },
   {
     id: 2,
@@ -112,6 +116,7 @@ const STUDENTS: Student[] = [
     phone: "+91 98765 43210",
     linkedin: "in/diyasharma",
     github: "@diyasharma",
+    honor: "SIH Finalist",
   },
   {
     id: 3,
