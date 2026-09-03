@@ -653,33 +653,86 @@ function SmartTransport() {
   );
 }
 
-const MESS_MENU: Record<string, { name: string; desc: string }[]> = {
-  Breakfast: [
-    { name: "Aloo Paratha", desc: "with curd & pickle" },
-    { name: "Poha", desc: "garnished with sev" },
-    { name: "Boiled Eggs", desc: "2 per student" },
-    { name: "Tea / Coffee", desc: "filter coffee" },
-  ],
-  Lunch: [
-    { name: "Rajma Chawal", desc: "Punjabi style" },
-    { name: "Phulka", desc: "butter optional" },
-    { name: "Paneer Bhurji", desc: "with capsicum" },
-    { name: "Salad & Curd", desc: "seasonal" },
-    { name: "Gulab Jamun", desc: "dessert" },
-  ],
-  Snacks: [
-    { name: "Veg Sandwich", desc: "grilled" },
-    { name: "Samosa", desc: "with chutney" },
-    { name: "Masala Chai", desc: "cutting" },
-    { name: "Bhel Puri", desc: "Mumbai style" },
-  ],
-  Dinner: [
-    { name: "Chicken Curry", desc: "home style" },
-    { name: "Jeera Rice", desc: "with ghee" },
-    { name: "Dal Tadka", desc: "yellow dal" },
-    { name: "Roti", desc: "unlimited" },
-    { name: "Kheer", desc: "dessert" },
-  ],
+const HOSTELS = ["Ramanujan Hostel", "Block B Girls Hostel", "Aryabhata Hostel"];
+
+const MESS_MENU: Record<string, Record<string, { name: string; desc: string }[]>> = {
+  "Ramanujan Hostel": {
+    Breakfast: [
+      { name: "Aloo Paratha", desc: "with curd & pickle" },
+      { name: "Poha", desc: "garnished with sev" },
+      { name: "Boiled Eggs", desc: "2 per student" },
+      { name: "Tea / Coffee", desc: "filter coffee" },
+    ],
+    Lunch: [
+      { name: "Paneer Butter Masala", desc: "with tandoori roti" },
+      { name: "Dal Tadka", desc: "yellow dal, ghee tadka" },
+      { name: "Jeera Rice", desc: "steamed" },
+      { name: "Salad & Curd", desc: "seasonal" },
+      { name: "Gulab Jamun", desc: "dessert" },
+    ],
+    Snacks: [
+      { name: "Samosa", desc: "with imli chutney" },
+      { name: "Bread Pakora", desc: "mint chutney" },
+      { name: "Masala Chai", desc: "cutting" },
+      { name: "Bhel Puri", desc: "Mumbai style" },
+    ],
+    Dinner: [
+      { name: "Chole Bhature", desc: "with onion rings" },
+      { name: "Dal Fry", desc: "moong-masoor mix" },
+      { name: "Phulka", desc: "unlimited" },
+      { name: "Kheer", desc: "dessert" },
+    ],
+  },
+  "Block B Girls Hostel": {
+    Breakfast: [
+      { name: "Poha", desc: "with peanuts & lemon" },
+      { name: "Idli Sambhar", desc: "4 pieces" },
+      { name: "Banana", desc: "1 per student" },
+      { name: "Tea / Coffee", desc: "filter coffee" },
+    ],
+    Lunch: [
+      { name: "Rajma Chawal", desc: "Punjabi style" },
+      { name: "Phulka", desc: "butter optional" },
+      { name: "Aloo Gobi", desc: "dry sabzi" },
+      { name: "Salad & Curd", desc: "seasonal" },
+    ],
+    Snacks: [
+      { name: "Veg Sandwich", desc: "grilled" },
+      { name: "Maggi", desc: "masala" },
+      { name: "Masala Chai", desc: "cutting" },
+    ],
+    Dinner: [
+      { name: "Paneer Butter Masala", desc: "with naan" },
+      { name: "Dal Tadka", desc: "yellow dal" },
+      { name: "Steamed Rice", desc: "with ghee" },
+      { name: "Roti", desc: "unlimited" },
+    ],
+  },
+  "Aryabhata Hostel": {
+    Breakfast: [
+      { name: "Aloo Paratha", desc: "with white butter" },
+      { name: "Upma", desc: "with coconut chutney" },
+      { name: "Sprouts", desc: "protein bowl" },
+      { name: "Tea / Coffee", desc: "filter coffee" },
+    ],
+    Lunch: [
+      { name: "Chicken Curry", desc: "home style" },
+      { name: "Dal Tadka", desc: "yellow dal" },
+      { name: "Jeera Rice", desc: "with ghee" },
+      { name: "Roti", desc: "unlimited" },
+    ],
+    Snacks: [
+      { name: "Veg Cutlet", desc: "with ketchup" },
+      { name: "Samosa", desc: "with chutney" },
+      { name: "Cold Coffee", desc: "summer special" },
+    ],
+    Dinner: [
+      { name: "Veg Biryani", desc: "with raita" },
+      { name: "Paneer Butter Masala", desc: "rich gravy" },
+      { name: "Phulka", desc: "unlimited" },
+      { name: "Ice Cream", desc: "vanilla cup" },
+    ],
+  },
 };
 
 const MESS_TABS = ["Breakfast", "Lunch", "Snacks", "Dinner"];
