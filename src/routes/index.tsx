@@ -309,6 +309,12 @@ function CampusOS() {
         )}
       </main>
 
+      <footer className="border-t border-border bg-card px-6 py-4 text-center">
+        <p className="text-xs text-muted-foreground">
+          © 2026 CampusOS — Centralized Campus Operations System
+        </p>
+      </footer>
+
       {/* Connect modal */}
       <Dialog open={!!connectStudent} onOpenChange={(o) => !o && setConnectStudent(null)}>
         <DialogContent className="bg-card border-border text-card-foreground max-w-md">
