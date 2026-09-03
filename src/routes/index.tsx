@@ -483,6 +483,15 @@ function CollabFinder({
                 </div>
               </div>
 
+              {s.honor && (
+                <div className="mt-3">
+                  <Badge className="border bg-amber-400/15 text-amber-300 border-amber-400/30 gap-1">
+                    <Award className="h-3 w-3" />
+                    {s.honor}
+                  </Badge>
+                </div>
+              )}
+
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {s.skills.map((sk) => (
                   <Badge
