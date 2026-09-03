@@ -9,7 +9,6 @@ import {
   RefreshCw,
   Map,
   BarChart3,
-  Sparkles,
   Mail,
   Phone,
   Linkedin,
@@ -44,10 +43,10 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CampusOS — One app for campus life" },
-      { name: "description", content: "CampusOS unifies collaboration finder, transport, hostel, mentorship, resources, maps and academic risk tracking into one super-app." },
-      { property: "og:title", content: "CampusOS — One app for campus life" },
-      { property: "og:description", content: "Collaboration finder, transport, hostel, mentorship, resources, maps and academic risk tracking in one app." },
+      { title: "CampusOS — Centralized Student Operations, Grievance Redressal & Peer Services" },
+      { name: "description", content: "CampusOS — Centralized Student Operations, Grievance Redressal & Peer Services." },
+      { property: "og:title", content: "CampusOS — Centralized Student Operations" },
+      { property: "og:description", content: "Centralized Student Operations, Grievance Redressal & Peer Services." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -64,14 +63,14 @@ type TabId =
   | "map"
   | "risk";
 
-const TABS: { id: TabId; label: string; icon: typeof Users; emoji: string }[] = [
-  { id: "collab", label: "Who Can Help?", icon: Users, emoji: "🧑‍💻" },
-  { id: "transport", label: "Smart Transport", icon: Bus, emoji: "🚌" },
-  { id: "hostel", label: "Hostel Hub", icon: Building2, emoji: "🏢" },
-  { id: "senior", label: "Senior Bridge", icon: GraduationCap, emoji: "📚" },
-  { id: "resource", label: "Resource Sharing", icon: RefreshCw, emoji: "🔄" },
-  { id: "map", label: "Campus Map & Cleanliness", icon: Map, emoji: "🗺️" },
-  { id: "risk", label: "Academic Risk Detector", icon: BarChart3, emoji: "📊" },
+const TABS: { id: TabId; label: string; icon: typeof Users }[] = [
+  { id: "collab", label: "Who Can Help?", icon: Users },
+  { id: "transport", label: "Smart Transport", icon: Bus },
+  { id: "hostel", label: "Hostel Hub", icon: Building2 },
+  { id: "senior", label: "Senior Bridge", icon: GraduationCap },
+  { id: "resource", label: "Resource Sharing", icon: RefreshCw },
+  { id: "map", label: "Campus Map & Cleanliness", icon: Map },
+  { id: "risk", label: "Academic Risk Detector", icon: BarChart3 },
 ];
 
 type Student = {
@@ -92,83 +91,83 @@ type Student = {
 const STUDENTS: Student[] = [
   {
     id: 1,
-    name: "Aarav Mehta",
-    branch: "Electronics & Communication",
+    name: "Rohan Verma",
+    branch: "B.Tech CSE",
     year: "3rd Year",
     skills: ["Arduino", "Embedded C", "Robotics", "PCB Design"],
     availability: "Free for Hackathons",
     tags: ["SIH", "Arduino", "Robotics"],
-    email: "aarav.mehta@campus.edu",
+    email: "rohan.verma@campus.edu",
     phone: "+91 98200 11234",
-    linkedin: "in/aaravmehta",
-    github: "@aaravmehta",
-    honor: "SIH Finalist",
+    linkedin: "in/rohanverma",
+    github: "@rohanverma",
+    honor: "SIH Finalist 2025",
   },
   {
     id: 2,
-    name: "Diya Sharma",
-    branch: "Computer Science",
-    year: "4th Year",
+    name: "Ananya Iyer",
+    branch: "B.Tech ECE",
+    year: "Final Year",
     skills: ["React", "Node.js", "Web Dev", "GraphQL"],
     availability: "Available weekends",
     tags: ["Web Dev", "SIH"],
-    email: "diya.sharma@campus.edu",
+    email: "ananya.iyer@campus.edu",
     phone: "+91 98765 43210",
-    linkedin: "in/diyasharma",
-    github: "@diyasharma",
-    honor: "SIH Finalist",
+    linkedin: "in/ananyaiyer",
+    github: "@ananyaiyer",
+    honor: "SIH Finalist 2025",
   },
   {
     id: 3,
-    name: "Kabir Nair",
-    branch: "Mechanical Engineering",
+    name: "Kartik Sharma",
+    branch: "B.Tech Mechanical",
     year: "2nd Year",
     skills: ["ROS", "Robotics", "Python", "CAD"],
     availability: "Free for Hackathons",
     tags: ["Robotics", "ML"],
-    email: "kabir.nair@campus.edu",
+    email: "kartik.sharma@campus.edu",
     phone: "+91 90011 22334",
-    linkedin: "in/kabirnair",
-    github: "@kabirnair",
+    linkedin: "in/kartiksharma",
+    github: "@kartiksharma",
   },
   {
     id: 4,
-    name: "Ishita Verma",
-    branch: "Information Technology",
+    name: "Priya Nair",
+    branch: "B.Tech IT",
     year: "3rd Year",
     skills: ["ML", "Python", "PyTorch", "Data Viz"],
     availability: "Open to collaborate",
     tags: ["ML", "Web Dev"],
-    email: "ishita.verma@campus.edu",
+    email: "priya.nair@campus.edu",
     phone: "+91 91234 56780",
-    linkedin: "in/ishitaverma",
-    github: "@ishitaverma",
+    linkedin: "in/priyanair",
+    github: "@priyanair",
   },
   {
     id: 5,
-    name: "Arjun Reddy",
-    branch: "Electronics & Communication",
+    name: "Aditya Reddy",
+    branch: "B.Tech ECE",
     year: "1st Year",
     skills: ["Arduino", "Sensors", "IoT", "C++"],
     availability: "Free for Hackathons",
     tags: ["Arduino", "SIH"],
-    email: "arjun.reddy@campus.edu",
+    email: "aditya.reddy@campus.edu",
     phone: "+91 93456 78901",
-    linkedin: "in/arjunreddy",
-    github: "@arjunreddy",
+    linkedin: "in/adityareddy",
+    github: "@adityareddy",
   },
   {
     id: 6,
-    name: "Sara Khan",
-    branch: "Computer Science",
-    year: "4th Year",
+    name: "Sneha Kulkarni",
+    branch: "B.Tech CSE",
+    year: "Final Year",
     skills: ["Web Dev", "TypeScript", "Firebase", "UI/UX"],
     availability: "Available evenings",
     tags: ["Web Dev", "SIH", "ML"],
-    email: "sara.khan@campus.edu",
+    email: "sneha.kulkarni@campus.edu",
     phone: "+91 94567 89012",
-    linkedin: "in/sarakhan",
-    github: "@sarakhan",
+    linkedin: "in/snehakulkarni",
+    github: "@snehakulkarni",
   },
 ];
 
@@ -213,14 +212,14 @@ function CampusOS() {
       <aside className="w-64 shrink-0 border-r border-sidebar-border bg-sidebar flex flex-col">
         <div className="px-5 py-5 border-b border-sidebar-border">
           <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-primary to-accent grid place-items-center shadow-lg shadow-primary/20">
-              <Sparkles className="h-5 w-5 text-primary-foreground" />
+            <div className="h-9 w-9 rounded-lg bg-primary grid place-items-center">
+              <GraduationCap className="h-5 w-5 text-primary-foreground" />
             </div>
             <div>
               <h1 className="text-base font-bold tracking-tight text-foreground">
                 CampusOS
               </h1>
-              <p className="text-[11px] text-muted-foreground">one app, all of campus</p>
+              <p className="text-[11px] text-muted-foreground">Student Portal</p>
             </div>
           </div>
         </div>
@@ -234,13 +233,12 @@ function CampusOS() {
                 key={t.id}
                 onClick={() => setActiveTab(t.id)}
                 className={cn(
-                  "w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all",
+                  "w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                   active
-                    ? "sidebar-active text-foreground"
-                    : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
+                    ? "sidebar-active"
+                    : "text-muted-foreground hover:bg-secondary hover:text-foreground",
                 )}
               >
-                <span className="text-base leading-none">{t.emoji}</span>
                 <Icon className="h-4 w-4 shrink-0" />
                 <span className="truncate text-left">{t.label}</span>
               </button>
@@ -249,7 +247,7 @@ function CampusOS() {
         </nav>
 
         <div className="p-3 border-t border-sidebar-border">
-          <div className="rounded-lg bg-secondary/60 px-3 py-3">
+          <div className="rounded-lg border border-border bg-secondary px-3 py-3">
             <p className="text-xs font-semibold text-foreground">Siddhi Amola</p>
             <p className="text-[11px] text-muted-foreground">ECE · 3rd Year</p>
           </div>
@@ -259,26 +257,26 @@ function CampusOS() {
       {/* Main content */}
       <main className="flex-1 min-w-0 overflow-y-auto">
         {/* Top portal navbar */}
-        <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-background/80 backdrop-blur-md px-6 py-3">
+        <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-card px-6 py-3">
           <div>
             <h1 className="text-sm font-bold tracking-tight text-foreground">
-              CampusOS <span className="text-muted-foreground font-medium">• Tech Institute Portal</span>
+              CampusOS <span className="text-muted-foreground font-normal">— Centralized Student Operations, Grievance Redressal &amp; Peer Services</span>
             </h1>
             <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
               <MapPin className="h-3 w-3" />
-              Campus: North Campus
+              Aryabhatta Academic Complex · North Campus
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <Badge className="border bg-emerald/15 text-emerald border-emerald/30 hidden sm:inline-flex">
+            <Badge className="border border-border bg-emerald-50 text-emerald-700 hidden sm:inline-flex">
               Semester: Odd 2025–26
             </Badge>
             <button
               aria-label="Notifications"
-              className="relative h-9 w-9 rounded-lg border border-border bg-card/70 grid place-items-center text-muted-foreground transition-colors hover:text-foreground hover:border-primary/40"
+              className="relative h-9 w-9 rounded-lg border border-border bg-card grid place-items-center text-muted-foreground transition-colors hover:text-foreground hover:border-primary"
             >
               <Bell className="h-4 w-4" />
-              <span className="absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[10px] font-bold text-destructive-foreground ring-2 ring-background">
+              <span className="absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground ring-2 ring-card">
                 2
               </span>
             </button>
@@ -318,7 +316,7 @@ function CampusOS() {
             <>
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
-                  <span className="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-accent grid place-items-center text-primary-foreground font-bold">
+                  <span className="h-10 w-10 rounded-full bg-primary grid place-items-center text-primary-foreground font-bold">
                     {connectStudent.name.split(" ").map((n) => n[0]).join("")}
                   </span>
                   <div>
@@ -347,7 +345,7 @@ function CampusOS() {
                   </div>
                 </div>
 
-                <div className="space-y-1.5 rounded-lg border border-border p-3 bg-background/40">
+                <div className="space-y-1.5 rounded-lg border border-border p-3 bg-secondary/50">
                   <ContactRow icon={Mail} value={connectStudent.email} />
                   <ContactRow icon={Phone} value={connectStudent.phone} />
                   <ContactRow icon={Linkedin} value={connectStudent.linkedin} />
@@ -355,9 +353,9 @@ function CampusOS() {
                 </div>
 
                 {sent ? (
-                  <div className="flex items-center gap-2 rounded-lg border border-emerald/40 bg-emerald/10 px-4 py-3 text-sm text-emerald">
+                  <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                     <CheckCircle2 className="h-4 w-4" />
-                    Message sent to {connectStudent.name}!
+                    Message sent to {connectStudent.name}.
                   </div>
                 ) : (
                   <>
@@ -369,7 +367,7 @@ function CampusOS() {
                       onChange={(e) => setMessage(e.target.value)}
                       rows={3}
                       placeholder={`Hi ${connectStudent.name.split(" ")[0]}, I saw your profile on CampusOS and…`}
-                      className="w-full resize-none rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                      className="w-full resize-none rounded-lg border border-input bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                     />
                     <button
                       onClick={handleSend}
@@ -416,7 +414,7 @@ function CollabFinder({
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">🧑‍💻 Who Can Help?</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Who Can Help?</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Find the right collaborator across campus — search by skill, project, or hackathon.
         </p>
@@ -428,8 +426,8 @@ function CollabFinder({
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder='e.g. Need someone who knows Arduino for SIH'
-          className="w-full rounded-2xl border border-input bg-card/60 glass-card py-3.5 pl-12 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
+          placeholder="e.g. Need someone who knows Arduino for SIH"
+          className="w-full rounded-xl border border-border bg-card py-3.5 pl-12 pr-4 text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
         />
       </div>
 
@@ -440,10 +438,10 @@ function CollabFinder({
             key={f}
             onClick={() => setActiveFilter(f)}
             className={cn(
-              "rounded-full px-4 py-1.5 text-sm font-medium transition-all",
+              "rounded-full px-4 py-1.5 text-sm font-medium transition-colors border",
               activeFilter === f
-                ? "bg-primary text-primary-foreground shadow shadow-primary/30"
-                : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary",
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card text-muted-foreground border-border hover:text-foreground hover:bg-secondary",
             )}
           >
             {f}
@@ -461,7 +459,7 @@ function CollabFinder({
 
       {/* Cards grid */}
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border bg-card/40 px-6 py-16 text-center">
+        <div className="rounded-xl border border-dashed border-border bg-card px-6 py-16 text-center">
           <p className="text-base font-medium text-foreground">No matches found</p>
           <p className="mt-1 text-sm text-muted-foreground">Try a different search term or filter.</p>
         </div>
@@ -470,10 +468,10 @@ function CollabFinder({
           {filtered.map((s) => (
             <div
               key={s.id}
-              className="group rounded-2xl border border-border bg-card/70 glass-card p-5 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+              className="group rounded-xl border border-border bg-card p-5 transition-all hover:border-primary hover:shadow-md"
             >
               <div className="flex items-start gap-3">
-                <div className="h-12 w-12 shrink-0 rounded-full bg-gradient-to-br from-primary to-accent grid place-items-center text-base font-bold text-primary-foreground">
+                <div className="h-12 w-12 shrink-0 rounded-full bg-primary grid place-items-center text-base font-bold text-primary-foreground">
                   {s.name.split(" ").map((n) => n[0]).join("")}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -485,7 +483,7 @@ function CollabFinder({
 
               {s.honor && (
                 <div className="mt-3">
-                  <Badge className="border bg-amber-400/15 text-amber-300 border-amber-400/30 gap-1">
+                  <Badge className="border border-amber-200 bg-amber-50 text-amber-700 gap-1">
                     <Award className="h-3 w-3" />
                     {s.honor}
                   </Badge>
@@ -497,14 +495,14 @@ function CollabFinder({
                   <Badge
                     key={sk}
                     variant="secondary"
-                    className="bg-primary/15 text-primary border border-primary/20"
+                    className="bg-blue-50 text-blue-700 border border-blue-200"
                   >
                     {sk}
                   </Badge>
                 ))}
               </div>
 
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-medium text-emerald">
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-medium text-emerald-700">
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 {s.availability}
               </div>
@@ -532,27 +530,27 @@ const SHUTTLES: {
   crowd: CrowdLevel;
   crowdLabel: string;
 }[] = [
-  { id: "Bus 3", route: "Main Gate", eta: 7, crowd: "moderate", crowdLabel: "Moderate crowd" },
-  { id: "Shuttle A", route: "Metro", eta: 2, crowd: "packed", crowdLabel: "Packed" },
-  { id: "Bus 1", route: "Campus Outer", eta: 14, crowd: "low", crowdLabel: "Low crowd" },
+  { id: "Bus 3", route: "Main Gate", eta: 7, crowd: "moderate", crowdLabel: "Moderate" },
+  { id: "Shuttle A", route: "Metro Station", eta: 2, crowd: "packed", crowdLabel: "Packed" },
+  { id: "Bus 1", route: "Campus Outer", eta: 14, crowd: "low", crowdLabel: "Low" },
 ];
 
 const STOP_TIMELINE: { stop: string; status: "done" | "current" | "upcoming"; time: string }[] = [
-  { stop: "Library Block", status: "done", time: "10:42" },
+  { stop: "Central Library Ground Floor", status: "done", time: "10:42" },
   { stop: "Sports Complex", status: "done", time: "10:48" },
   { stop: "Main Gate", status: "current", time: "11:02" },
   { stop: "Metro Station", status: "upcoming", time: "11:11" },
-  { stop: "Hostel Circle", status: "upcoming", time: "11:24" },
+  { stop: "Hostel Block 4 (Kaveri)", status: "upcoming", time: "11:24" },
 ];
 
 function crowdBadge(level: CrowdLevel) {
   switch (level) {
     case "low":
-      return "bg-emerald/15 text-emerald border-emerald/30";
+      return "bg-emerald-50 text-emerald-700 border-emerald-200";
     case "moderate":
-      return "bg-amber-400/15 text-amber-300 border-amber-400/30";
+      return "bg-amber-50 text-amber-700 border-amber-200";
     case "packed":
-      return "bg-destructive/15 text-destructive border-destructive/30";
+      return "bg-red-50 text-red-700 border-red-200";
   }
 }
 
@@ -560,18 +558,18 @@ function SmartTransport() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">🚌 Smart Transport</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Smart Transport</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Live campus shuttle status, route stops, and schedule announcements.
         </p>
       </header>
 
       {/* Announcement banner */}
-      <div className="mb-6 flex items-start gap-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-3">
-        <Megaphone className="h-5 w-5 shrink-0 text-amber-300 mt-0.5" />
+      <div className="mb-6 flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+        <Megaphone className="h-5 w-5 shrink-0 text-amber-700 mt-0.5" />
         <div>
-          <p className="text-sm font-semibold text-amber-200">Schedule change notice</p>
-          <p className="text-xs text-amber-200/80">
+          <p className="text-sm font-semibold text-amber-800">Schedule change notice</p>
+          <p className="text-xs text-amber-700">
             Shuttle A will skip the Sports Complex stop from 11:30 AM–12:30 PM due to event setup. Use Bus 3 instead.
           </p>
         </div>
@@ -585,11 +583,11 @@ function SmartTransport() {
         {SHUTTLES.map((s) => (
           <div
             key={s.id}
-            className="rounded-2xl border border-border bg-card/70 glass-card p-5 transition-all hover:border-primary/40"
+            className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="h-9 w-9 rounded-lg bg-primary/15 grid place-items-center">
+                <div className="h-9 w-9 rounded-lg bg-blue-50 grid place-items-center">
                   <Bus className="h-5 w-5 text-primary" />
                 </div>
                 <span className="font-semibold text-foreground">{s.id}</span>
@@ -613,16 +611,16 @@ function SmartTransport() {
       <h3 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
         Route timeline — Bus 3
       </h3>
-      <div className="rounded-2xl border border-border bg-card/70 glass-card p-5">
+      <div className="rounded-xl border border-border bg-card p-5">
         <ol className="relative space-y-5 before:absolute before:left-[7px] before:top-1 before:bottom-1 before:w-px before:bg-border">
           {STOP_TIMELINE.map((stop) => (
             <li key={stop.stop} className="relative flex items-center gap-3 pl-8">
               <span
                 className={cn(
                   "absolute left-0 top-1/2 -translate-y-1/2 h-3.5 w-3.5 rounded-full border-2",
-                  stop.status === "done" && "bg-secondary border-secondary",
-                  stop.status === "current" && "bg-primary border-primary ring-4 ring-primary/20",
-                  stop.status === "upcoming" && "bg-background border-border",
+                  stop.status === "done" && "bg-secondary border-border",
+                  stop.status === "current" && "bg-primary border-primary ring-4 ring-primary/15",
+                  stop.status === "upcoming" && "bg-card border-border",
                 )}
               />
               <div className="flex-1 flex items-center justify-between">
@@ -653,48 +651,45 @@ function SmartTransport() {
   );
 }
 
-const HOSTELS = ["Ramanujan Hostel", "Block B Girls Hostel", "Aryabhata Hostel"];
+const HOSTELS = ["Hostel Block 4 (Kaveri)", "Hostel Block 6 (Ganga)", "Hostel Block 2 (Yamuna)"];
 
 const MESS_MENU: Record<string, Record<string, { name: string; desc: string }[]>> = {
-  "Ramanujan Hostel": {
+  "Hostel Block 4 (Kaveri)": {
     Breakfast: [
-      { name: "Aloo Paratha", desc: "with curd & pickle" },
-      { name: "Poha", desc: "garnished with sev" },
+      { name: "Poha", desc: "garnished with sev & lemon" },
+      { name: "Sprouts", desc: "moong & chana mix" },
       { name: "Boiled Eggs", desc: "2 per student" },
-      { name: "Tea / Coffee", desc: "filter coffee" },
-    ],
-    Lunch: [
-      { name: "Paneer Butter Masala", desc: "with tandoori roti" },
-      { name: "Dal Tadka", desc: "yellow dal, ghee tadka" },
-      { name: "Jeera Rice", desc: "steamed" },
-      { name: "Salad & Curd", desc: "seasonal" },
-      { name: "Gulab Jamun", desc: "dessert" },
-    ],
-    Snacks: [
-      { name: "Samosa", desc: "with imli chutney" },
-      { name: "Bread Pakora", desc: "mint chutney" },
-      { name: "Masala Chai", desc: "cutting" },
-      { name: "Bhel Puri", desc: "Mumbai style" },
-    ],
-    Dinner: [
-      { name: "Chole Bhature", desc: "with onion rings" },
-      { name: "Dal Fry", desc: "moong-masoor mix" },
-      { name: "Phulka", desc: "unlimited" },
-      { name: "Kheer", desc: "dessert" },
-    ],
-  },
-  "Block B Girls Hostel": {
-    Breakfast: [
-      { name: "Poha", desc: "with peanuts & lemon" },
-      { name: "Idli Sambhar", desc: "4 pieces" },
-      { name: "Banana", desc: "1 per student" },
-      { name: "Tea / Coffee", desc: "filter coffee" },
+      { name: "Chai", desc: "masala tea" },
     ],
     Lunch: [
       { name: "Rajma Chawal", desc: "Punjabi style" },
-      { name: "Phulka", desc: "butter optional" },
-      { name: "Aloo Gobi", desc: "dry sabzi" },
-      { name: "Salad & Curd", desc: "seasonal" },
+      { name: "Roti", desc: "unlimited" },
+      { name: "Curd", desc: "fresh" },
+      { name: "Salad", desc: "seasonal" },
+    ],
+    Snacks: [
+      { name: "Samosa", desc: "with imli chutney" },
+      { name: "Masala Chai", desc: "cutting" },
+    ],
+    Dinner: [
+      { name: "Dal Tadka", desc: "yellow dal, ghee tadka" },
+      { name: "Paneer Butter Masala", desc: "rich gravy" },
+      { name: "Rice", desc: "steamed" },
+      { name: "Roti", desc: "unlimited" },
+    ],
+  },
+  "Hostel Block 6 (Ganga)": {
+    Breakfast: [
+      { name: "Idli Sambhar", desc: "4 pieces" },
+      { name: "Sprouts", desc: "protein bowl" },
+      { name: "Boiled Eggs", desc: "2 per student" },
+      { name: "Chai", desc: "filter coffee" },
+    ],
+    Lunch: [
+      { name: "Chole Bhature", desc: "with onion rings" },
+      { name: "Roti", desc: "butter optional" },
+      { name: "Curd", desc: "fresh" },
+      { name: "Salad", desc: "seasonal" },
     ],
     Snacks: [
       { name: "Veg Sandwich", desc: "grilled" },
@@ -702,35 +697,34 @@ const MESS_MENU: Record<string, Record<string, { name: string; desc: string }[]>
       { name: "Masala Chai", desc: "cutting" },
     ],
     Dinner: [
-      { name: "Paneer Butter Masala", desc: "with naan" },
       { name: "Dal Tadka", desc: "yellow dal" },
+      { name: "Aloo Gobi", desc: "dry sabzi" },
       { name: "Steamed Rice", desc: "with ghee" },
       { name: "Roti", desc: "unlimited" },
     ],
   },
-  "Aryabhata Hostel": {
+  "Hostel Block 2 (Yamuna)": {
     Breakfast: [
-      { name: "Aloo Paratha", desc: "with white butter" },
-      { name: "Upma", desc: "with coconut chutney" },
+      { name: "Aloo Paratha", desc: "with curd & pickle" },
       { name: "Sprouts", desc: "protein bowl" },
-      { name: "Tea / Coffee", desc: "filter coffee" },
+      { name: "Boiled Eggs", desc: "2 per student" },
+      { name: "Chai", desc: "masala tea" },
     ],
     Lunch: [
-      { name: "Chicken Curry", desc: "home style" },
-      { name: "Dal Tadka", desc: "yellow dal" },
-      { name: "Jeera Rice", desc: "with ghee" },
+      { name: "Rajma Chawal", desc: "Punjabi style" },
       { name: "Roti", desc: "unlimited" },
+      { name: "Curd", desc: "fresh" },
+      { name: "Salad", desc: "seasonal" },
     ],
     Snacks: [
-      { name: "Veg Cutlet", desc: "with ketchup" },
-      { name: "Samosa", desc: "with chutney" },
-      { name: "Cold Coffee", desc: "summer special" },
+      { name: "Bhel Puri", desc: "Mumbai style" },
+      { name: "Masala Chai", desc: "cutting" },
     ],
     Dinner: [
-      { name: "Veg Biryani", desc: "with raita" },
-      { name: "Paneer Butter Masala", desc: "rich gravy" },
-      { name: "Phulka", desc: "unlimited" },
-      { name: "Ice Cream", desc: "vanilla cup" },
+      { name: "Dal Tadka", desc: "yellow dal" },
+      { name: "Paneer Butter Masala", desc: "with naan" },
+      { name: "Rice", desc: "steamed" },
+      { name: "Roti", desc: "unlimited" },
     ],
   },
 };
@@ -744,10 +738,10 @@ const ISSUE_CATEGORIES = [
   { value: "Laundry", icon: WashingMachine },
 ];
 
-const SEED_COMPLAINTS: { id: number; category: string; detail: string; status: "Open" | "In Progress" | "Resolved"; time: string }[] = [
-  { id: 101, category: "Water", detail: "No hot water in Ramanujan B-204 since morning", status: "In Progress", time: "2h ago" },
-  { id: 100, category: "Cleaning", detail: "Bathroom on Block B 3rd floor not cleaned", status: "Open", time: "5h ago" },
-  { id: 99, category: "Electricity", detail: "Flickering tube light in Aryabhata corridor", status: "Resolved", time: "1d ago" },
+const SEED_COMPLAINTS: { id: string; category: string; detail: string; status: "Open" | "In Review" | "Resolved"; time: string }[] = [
+  { id: "#GRV-2026-091", category: "Water", detail: "No hot water in Kaveri Wing B-204 since morning", status: "In Review", time: "2h ago" },
+  { id: "#GRV-2026-090", category: "Cleaning", detail: "Bathroom on Block 6 3rd floor not cleaned", status: "Open", time: "5h ago" },
+  { id: "#GRV-2026-089", category: "Electricity", detail: "Wi-Fi router down in Kaveri Wing B", status: "Resolved", time: "1d ago" },
 ];
 
 function HostelHub() {
@@ -761,8 +755,9 @@ function HostelHub() {
     e.preventDefault();
     const trimmed = detail.trim();
     if (trimmed === "") return;
+    const nextId = `#GRV-2026-${92 + complaints.length - 3}`;
     setComplaints([
-      { id: Date.now(), category, detail: trimmed.slice(0, 200), status: "Open", time: "Just now" },
+      { id: nextId, category, detail: trimmed.slice(0, 200), status: "Open", time: "Just now" },
       ...complaints,
     ]);
     setDetail("");
@@ -771,26 +766,26 @@ function HostelHub() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">🏢 Hostel Hub</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Hostel Hub</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Mess menu, maintenance alerts, and a quick way to report hostel issues.
         </p>
       </header>
 
       {/* Alert banner */}
-      <div className="mb-6 flex items-start gap-3 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3">
-        <AlertTriangle className="h-5 w-5 shrink-0 text-destructive mt-0.5" />
+      <div className="mb-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+        <AlertTriangle className="h-5 w-5 shrink-0 text-red-600 mt-0.5" />
         <div>
-          <p className="text-sm font-semibold text-destructive">⚠️ Notice</p>
-          <p className="text-xs text-destructive/80">
-            Hostel Block B has experienced 4 water outages this month. Maintenance scheduled.
+          <p className="text-sm font-semibold text-red-800">Maintenance Notice</p>
+          <p className="text-xs text-red-700">
+            Hostel Block 6 (Ganga) has experienced 4 water outages this month. Maintenance scheduled for Saturday.
           </p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Mess menu */}
-        <div className="rounded-2xl border border-border bg-card/70 glass-card p-5">
+        <div className="rounded-xl border border-border bg-card p-5">
           <div className="flex items-center gap-2 mb-4">
             <Utensils className="h-5 w-5 text-primary" />
             <h3 className="font-semibold text-foreground">Today's Mess Menu</h3>
@@ -801,10 +796,10 @@ function HostelHub() {
                 key={h}
                 onClick={() => setHostel(h)}
                 className={cn(
-                  "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all",
+                  "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
                   hostel === h
-                    ? "border-primary bg-primary/15 text-primary"
-                    : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                    ? "border-primary bg-blue-50 text-primary"
+                    : "border-border bg-secondary text-muted-foreground hover:text-foreground",
                 )}
               >
                 {h}
@@ -817,10 +812,10 @@ function HostelHub() {
                 key={t}
                 onClick={() => setMessTab(t)}
                 className={cn(
-                  "rounded-full px-3.5 py-1.5 text-xs font-medium transition-all",
+                  "rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors border",
                   messTab === t
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary/60 text-muted-foreground hover:text-foreground",
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-card text-muted-foreground border-border hover:text-foreground hover:bg-secondary",
                 )}
               >
                 {t}
@@ -831,7 +826,7 @@ function HostelHub() {
             {(MESS_MENU[hostel]?.[messTab] ?? []).map((item) => (
               <li
                 key={item.name}
-                className="flex items-center justify-between rounded-lg bg-background/40 border border-border px-3 py-2.5"
+                className="flex items-center justify-between rounded-lg border border-border bg-secondary/50 px-3 py-2.5"
               >
                 <span className="text-sm font-medium text-foreground">{item.name}</span>
                 <span className="text-xs text-muted-foreground">{item.desc}</span>
@@ -841,7 +836,7 @@ function HostelHub() {
         </div>
 
         {/* Report issue form */}
-        <div className="rounded-2xl border border-border bg-card/70 glass-card p-5">
+        <div className="rounded-xl border border-border bg-card p-5">
           <h3 className="font-semibold text-foreground mb-4">Report Hostel Issue</h3>
           <form onSubmit={handleSubmit} className="space-y-3">
             <div>
@@ -858,10 +853,10 @@ function HostelHub() {
                       type="button"
                       onClick={() => setCategory(c.value)}
                       className={cn(
-                        "inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all",
+                        "inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
                         active
-                          ? "border-primary bg-primary/15 text-primary"
-                          : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                          ? "border-primary bg-blue-50 text-primary"
+                          : "border-border bg-secondary text-muted-foreground hover:text-foreground",
                       )}
                     >
                       <Icon className="h-3.5 w-3.5" />
@@ -879,8 +874,8 @@ function HostelHub() {
                 value={detail}
                 onChange={(e) => setDetail(e.target.value.slice(0, 200))}
                 rows={3}
-                placeholder="e.g. Tap leaking in B-204 washroom"
-                className="mt-1.5 w-full resize-none rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                placeholder="e.g. Tap leaking in Kaveri B-204 washroom"
+                className="mt-1.5 w-full resize-none rounded-lg border border-input bg-card px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               />
               <p className="mt-1 text-right text-[11px] text-muted-foreground">
                 {detail.length}/200
@@ -908,23 +903,25 @@ function HostelHub() {
           return (
             <div
               key={c.id}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card/70 glass-card px-4 py-3"
+              className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3"
             >
-              <div className="h-9 w-9 shrink-0 rounded-lg bg-primary/15 grid place-items-center">
+              <div className="h-9 w-9 shrink-0 rounded-lg bg-blue-50 grid place-items-center">
                 <Icon className="h-4 w-4 text-primary" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-foreground truncate">{c.detail}</p>
                 <p className="text-xs text-muted-foreground">
-                  {c.category} · {c.time}
+                  <span className="font-mono">{c.id}</span> · {c.category} · {c.time}
                 </p>
               </div>
               <Badge
                 className={cn(
                   "border",
                   c.status === "Open"
-                    ? "bg-amber-400/15 text-amber-300 border-amber-400/30"
-                    : "bg-primary/15 text-primary border-primary/30",
+                    ? "bg-amber-50 text-amber-700 border-amber-200"
+                    : c.status === "In Review"
+                      ? "bg-blue-50 text-blue-700 border-blue-200"
+                      : "bg-emerald-50 text-emerald-700 border-emerald-200",
                 )}
               >
                 {c.status}
@@ -946,7 +943,7 @@ const SENIOR_STEPS: { label: string; options: string[] }[] = [
     label: "Semester",
     options: ["Sem 1", "Sem 2", "Sem 3", "Sem 4", "Sem 5", "Sem 6", "Sem 7", "Sem 8"],
   },
-  { label: "Subject", options: ["DBMS", "Operating Systems", "DSA"] },
+  { label: "Course", options: ["CS301 — Operating Systems", "MA201 — Discrete Mathematics", "EC204 — Signals & Systems"] },
 ];
 
 const SENIOR_RESOURCES: {
@@ -981,14 +978,14 @@ function SeniorBridge() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">📚 Senior Bridge</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Senior Bridge</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Notes, papers, and prof intel — passed down from seniors, filtered to your exact semester.
         </p>
       </header>
 
       {/* Nested filter selector */}
-      <div className="rounded-2xl border border-border bg-card/70 glass-card p-5 space-y-4">
+      <div className="rounded-xl border border-border bg-card p-5 space-y-4">
         {SENIOR_STEPS.map((step, i) => {
           const locked = i > 0 && !selections[i - 1];
           return (
@@ -1003,10 +1000,10 @@ function SeniorBridge() {
                     key={opt}
                     onClick={() => select(i, opt)}
                     className={cn(
-                      "rounded-lg border px-3.5 py-1.5 text-sm font-medium transition-all",
+                      "rounded-lg border px-3.5 py-1.5 text-sm font-medium transition-colors",
                       selections[i] === opt
-                        ? "border-primary bg-primary/15 text-primary"
-                        : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                        ? "border-primary bg-blue-50 text-primary"
+                        : "border-border bg-secondary text-muted-foreground hover:text-foreground",
                     )}
                   >
                     {opt}
@@ -1025,10 +1022,10 @@ function SeniorBridge() {
           : "Resources — complete all 4 steps above"}
       </h3>
       {!allSelected ? (
-        <div className="rounded-2xl border border-dashed border-border bg-card/40 px-6 py-12 text-center">
+        <div className="rounded-xl border border-dashed border-border bg-card px-6 py-12 text-center">
           <GraduationCap className="mx-auto mb-3 h-8 w-8 text-muted-foreground" />
           <p className="text-sm text-muted-foreground">
-            Pick your Branch, Year, Semester and Subject to unlock senior-shared material.
+            Pick your Branch, Year, Semester and Course to unlock senior-shared material.
           </p>
         </div>
       ) : (
@@ -1036,24 +1033,24 @@ function SeniorBridge() {
           {SENIOR_RESOURCES.map((r) => {
             const Icon = r.icon;
             return (
-              <div key={r.id} className="rounded-2xl border border-border bg-card/70 glass-card p-5 transition-all hover:border-primary/40">
+              <div key={r.id} className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary">
                 <div className="flex items-start gap-3">
-                  <div className="h-11 w-11 shrink-0 rounded-xl bg-primary/15 grid place-items-center">
+                  <div className="h-11 w-11 shrink-0 rounded-lg bg-blue-50 grid place-items-center">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h4 className="font-semibold text-foreground">{r.title}</h4>
                     <p className="mt-0.5 text-xs text-muted-foreground">{r.desc}</p>
-                    <p className="mt-1 text-[11px] text-emerald">{r.meta}</p>
+                    <p className="mt-1 text-[11px] text-emerald-700">{r.meta}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setDownloaded(r.id)}
                   className={cn(
-                    "mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold transition-colors",
+                    "mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold transition-colors border",
                     downloaded === r.id
-                      ? "bg-emerald/15 text-emerald border border-emerald/30"
-                      : "bg-primary text-primary-foreground hover:bg-primary/90",
+                      ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                      : "bg-primary text-primary-foreground border-primary hover:bg-primary/90",
                   )}
                 >
                   {downloaded === r.id ? (
@@ -1078,9 +1075,9 @@ function SeniorBridge() {
 // ---------------- Resource Sharing ----------------
 
 const EQUIPMENT: { id: string; name: string; owner: string; dept: string; available: boolean }[] = [
-  { id: "hdmi", name: "HDMI Cable", owner: "Rohan Patil", dept: "CSE", available: true },
-  { id: "draw", name: "Engineering Drawing Instruments", owner: "Meera Joshi", dept: "ME", available: true },
-  { id: "dmm", name: "Digital Multimeter", owner: "Aditya Rao", dept: "ECE", available: true },
+  { id: "hdmi", name: "HDMI Cable", owner: "Rohan Verma", dept: "CSE", available: true },
+  { id: "draw", name: "Engineering Drawing Instruments", owner: "Kartik Sharma", dept: "ME", available: true },
+  { id: "dmm", name: "Digital Multimeter", owner: "Aditya Reddy", dept: "ECE", available: true },
   { id: "arduino", name: "Arduino Uno Kit", owner: "Sneha Kulkarni", dept: "ECE", available: true },
 ];
 
@@ -1090,7 +1087,7 @@ function ResourceSharing() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">🔄 Resource Sharing</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Resource Sharing</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Peer-to-peer equipment borrowing — request it, scan the QR, return it.
         </p>
@@ -1098,10 +1095,10 @@ function ResourceSharing() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {EQUIPMENT.map((item) => (
-          <div key={item.id} className="rounded-2xl border border-border bg-card/70 glass-card p-5 transition-all hover:border-primary/40">
+          <div key={item.id} className="rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary">
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="h-11 w-11 rounded-xl bg-primary/15 grid place-items-center">
+                <div className="h-11 w-11 rounded-lg bg-blue-50 grid place-items-center">
                   <RefreshCw className="h-5 w-5 text-primary" />
                 </div>
                 <div>
@@ -1112,7 +1109,7 @@ function ResourceSharing() {
                 </div>
               </div>
               {item.available && (
-                <Badge className="border bg-emerald/15 text-emerald border-emerald/30">Available</Badge>
+                <Badge className="border border-emerald-200 bg-emerald-50 text-emerald-700">Available</Badge>
               )}
             </div>
             <button
@@ -1136,11 +1133,11 @@ function ResourceSharing() {
                 </DialogDescription>
               </DialogHeader>
               <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
-                <li>Meet the owner at the Innovation Lab, 2nd floor.</li>
+                <li>Meet the owner at the Aryabhatta Academic Complex, 2nd floor Innovation Lab.</li>
                 <li>Show this QR check-out code at pickup.</li>
                 <li>Return within 48 hours to keep your borrow score.</li>
               </ol>
-              <div className="mx-auto flex flex-col items-center gap-2 rounded-xl border border-border bg-background/60 p-5">
+              <div className="mx-auto flex flex-col items-center gap-2 rounded-lg border border-border bg-secondary/50 p-5">
                 <QrCode className="h-28 w-28 text-foreground" strokeWidth={1.2} />
                 <span className="font-mono text-xs text-muted-foreground tracking-widest">
                   CMP-CHK-{borrowItem.id.toUpperCase()}-7291
@@ -1164,17 +1161,17 @@ function ResourceSharing() {
 
 const ZONES: { id: string; name: string; crowd: "High" | "Moderate" | "Low"; score: number; note: string }[] = [
   { id: "cse", name: "CSE Block", crowd: "Moderate", score: 88, note: "Labs busy, corridors tidy" },
-  { id: "lib", name: "Central Library", crowd: "Low", score: 94, note: "Quiet floors available" },
+  { id: "lib", name: "Central Library Ground Floor", crowd: "Low", score: 94, note: "Quiet floors available" },
   { id: "gym", name: "Campus Gym", crowd: "High", score: 71, note: "Peak hours 5–7 PM" },
-  { id: "food", name: "Food Court", crowd: "Moderate", score: 82, note: "Lunch rush expected 1 PM" },
+  { id: "food", name: "Main Canteen", crowd: "Moderate", score: 82, note: "Lunch rush expected 1 PM" },
 ];
 
 const GRIEVANCE_TYPES = ["Overflowing Bins", "Broken Projector", "Potholes", "Water Leakage"];
 
 function crowdColor(crowd: string) {
-  if (crowd === "High") return "bg-destructive/15 text-destructive border-destructive/30";
-  if (crowd === "Moderate") return "bg-amber-400/15 text-amber-300 border-amber-400/30";
-  return "bg-emerald/15 text-emerald border-emerald/30";
+  if (crowd === "High") return "bg-red-50 text-red-700 border-red-200";
+  if (crowd === "Moderate") return "bg-amber-50 text-amber-700 border-amber-200";
+  return "bg-emerald-50 text-emerald-700 border-emerald-200";
 }
 
 function CampusMap() {
@@ -1186,7 +1183,7 @@ function CampusMap() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">🗺️ Campus Map & Cleanliness</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Campus Map &amp; Cleanliness</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Live crowd levels and cleanliness scores across campus zones.
         </p>
@@ -1199,10 +1196,10 @@ function CampusMap() {
             key={z.id}
             onClick={() => setZone(z)}
             className={cn(
-              "rounded-2xl border p-4 text-left transition-all",
+              "rounded-xl border p-4 text-left transition-colors",
               zone.id === z.id
-                ? "border-primary bg-primary/10 shadow-lg shadow-primary/10"
-                : "border-border bg-card/70 glass-card hover:border-primary/40",
+                ? "border-primary bg-blue-50"
+                : "border-border bg-card hover:border-primary",
             )}
           >
             <MapPin className={cn("h-5 w-5 mb-2", zone.id === z.id ? "text-primary" : "text-muted-foreground")} />
@@ -1213,7 +1210,7 @@ function CampusMap() {
       </div>
 
       {/* Zone detail */}
-      <div className="rounded-2xl border border-border bg-card/70 glass-card p-6">
+      <div className="rounded-xl border border-border bg-card p-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h3 className="text-lg font-bold text-foreground">{zone.name}</h3>
@@ -1225,16 +1222,16 @@ function CampusMap() {
           </div>
           <div className="text-right">
             <div className="flex items-center gap-2">
-              <Gauge className="h-5 w-5 text-emerald" />
+              <Gauge className="h-5 w-5 text-emerald-600" />
               <span className="text-3xl font-bold text-foreground">{zone.score}</span>
               <span className="text-sm text-muted-foreground">/100</span>
             </div>
             <p className="text-xs text-muted-foreground">Cleanliness score</p>
           </div>
         </div>
-        <div className="mt-4 h-2.5 rounded-full bg-secondary/60 overflow-hidden">
+        <div className="mt-4 h-2.5 rounded-full bg-secondary overflow-hidden">
           <div
-            className={cn("h-full rounded-full", zone.score >= 85 ? "bg-emerald" : zone.score >= 75 ? "bg-primary" : "bg-amber-400")}
+            className={cn("h-full rounded-full", zone.score >= 85 ? "bg-emerald-500" : zone.score >= 75 ? "bg-primary" : "bg-amber-500")}
             style={{ width: `${zone.score}%` }}
           />
         </div>
@@ -1258,9 +1255,9 @@ function CampusMap() {
             <DialogDescription>Pick an issue type and we'll route it to campus maintenance.</DialogDescription>
           </DialogHeader>
           {reported ? (
-            <div className="flex items-center gap-2 rounded-lg border border-emerald/40 bg-emerald/10 px-4 py-3 text-sm text-emerald">
+            <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
               <CheckCircle2 className="h-4 w-4" />
-              {grievance} reported at {zone.name}. Ticket created!
+              {grievance} reported at {zone.name}. Ticket #GRV-2026-092 created.
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-2">
@@ -1269,10 +1266,10 @@ function CampusMap() {
                   key={g}
                   onClick={() => setGrievance(g)}
                   className={cn(
-                    "flex items-center gap-2.5 rounded-lg border px-4 py-2.5 text-sm font-medium text-left transition-all",
+                    "flex items-center gap-2.5 rounded-lg border px-4 py-2.5 text-sm font-medium text-left transition-colors",
                     grievance === g
-                      ? "border-primary bg-primary/15 text-primary"
-                      : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                      ? "border-primary bg-blue-50 text-primary"
+                      : "border-border bg-secondary text-muted-foreground hover:text-foreground",
                   )}
                 >
                   <Trash2 className="h-4 w-4 shrink-0" />
@@ -1301,26 +1298,26 @@ function RiskDetector() {
 
   const metrics = [
     { label: "Attendance", value: "68%", pct: 68, danger: true, hint: "Below 75% threshold" },
-    { label: "Internal Marks", value: "14/30", pct: 47, danger: true, hint: "DBMS mid-sem" },
+    { label: "Internal Marks", value: "14/30", pct: 47, danger: true, hint: "CS301 mid-sem" },
     { label: "Assignment Completion", value: "72%", pct: 72, danger: false, hint: "2 pending submissions" },
   ];
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">📊 Academic Risk Detector</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">Academic Risk Detector</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Early-warning analysis of attendance, marks, and submissions.
         </p>
       </header>
 
       {/* Warning banner */}
-      <div className="mb-6 flex items-start gap-3 rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-4">
-        <AlertTriangle className="h-5 w-5 shrink-0 text-destructive mt-0.5" />
+      <div className="mb-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-4">
+        <AlertTriangle className="h-5 w-5 shrink-0 text-red-600 mt-0.5" />
         <div>
-          <p className="text-sm font-semibold text-destructive">⚠️ Attention Required</p>
-          <p className="text-xs text-destructive/80">
-            Current attendance &amp; internal pattern flags risk in DBMS (Database Management Systems).
+          <p className="text-sm font-semibold text-red-800">Attention Required</p>
+          <p className="text-xs text-red-700">
+            Current attendance &amp; internal pattern flags risk in CS301 (Operating Systems).
           </p>
         </div>
       </div>
@@ -1328,17 +1325,17 @@ function RiskDetector() {
       {/* Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {metrics.map((m) => (
-          <div key={m.label} className="rounded-2xl border border-border bg-card/70 glass-card p-5">
+          <div key={m.label} className="rounded-xl border border-border bg-card p-5">
             <div className="flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{m.label}</p>
-              <BarChart3 className={cn("h-4 w-4", m.danger ? "text-destructive" : "text-emerald")} />
+              <BarChart3 className={cn("h-4 w-4", m.danger ? "text-red-600" : "text-emerald-600")} />
             </div>
-            <p className={cn("mt-2 text-3xl font-bold", m.danger ? "text-destructive" : "text-foreground")}>
+            <p className={cn("mt-2 text-3xl font-bold", m.danger ? "text-red-700" : "text-foreground")}>
               {m.value}
             </p>
-            <div className="mt-3 h-2 rounded-full bg-secondary/60 overflow-hidden">
+            <div className="mt-3 h-2 rounded-full bg-secondary overflow-hidden">
               <div
-                className={cn("h-full rounded-full", m.danger ? "bg-destructive" : "bg-emerald")}
+                className={cn("h-full rounded-full", m.danger ? "bg-red-500" : "bg-emerald-500")}
                 style={{ width: `${m.pct}%` }}
               />
             </div>
@@ -1348,28 +1345,28 @@ function RiskDetector() {
       </div>
 
       {/* Advisor note + action */}
-      <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6">
+      <div className="rounded-xl border border-blue-200 bg-blue-50 p-6">
         <div className="flex items-start gap-3">
           <Lightbulb className="h-5 w-5 shrink-0 text-primary mt-0.5" />
           <div className="flex-1">
             <p className="text-sm font-semibold text-foreground">Advisor recommendation</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Attend the next 4 DBMS lectures consecutively to cross the 75% attendance bar, and submit the
-              pending ER-diagram assignment by Friday. A peer tutor from 4th year can revise Normalization
-              and Indexing with you before the end-sem.
+              Attend the next 4 CS301 lectures consecutively to cross the 75% attendance bar, and submit the
+              pending process-scheduling assignment by Friday. A peer tutor from 4th year can revise CPU
+              scheduling and Deadlocks with you before the end-sem.
             </p>
             <button
               onClick={() => setBooked(true)}
               disabled={booked}
               className={cn(
-                "mt-4 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors",
+                "mt-4 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors border",
                 booked
-                  ? "bg-emerald/15 text-emerald border border-emerald/30 cursor-default"
-                  : "bg-primary text-primary-foreground hover:bg-primary/90",
+                  ? "bg-emerald-50 text-emerald-700 border-emerald-200 cursor-default"
+                  : "bg-primary text-primary-foreground border-primary hover:bg-primary/90",
               )}
             >
               <CalendarCheck className="h-4 w-4" />
-              {booked ? "Peer Tutor booked — Sat 11 AM, Library Room 3" : "Book Peer Tutor"}
+              {booked ? "Peer Tutor booked — Sat 11 AM, Central Library Room 3" : "Book Peer Tutor"}
             </button>
           </div>
         </div>
@@ -1378,22 +1375,20 @@ function RiskDetector() {
   );
 }
 
-function PlaceholderModule({ tab }: { tab: { label: string; emoji: string; icon: typeof Users } }) {
+function PlaceholderModule({ tab }: { tab: { label: string; icon: typeof Users } }) {
   const Icon = tab.icon;
   return (
     <div className="mx-auto max-w-6xl px-6 py-8">
       <header className="mb-6">
-        <h2 className="text-2xl font-bold tracking-tight">
-          {tab.emoji} {tab.label}
-        </h2>
+        <h2 className="text-2xl font-bold tracking-tight text-foreground">{tab.label}</h2>
       </header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {Array.from({ length: 3 }).map((_, i) => (
           <div
             key={i}
-            className="rounded-2xl border border-dashed border-border bg-card/40 p-8 text-center"
+            className="rounded-xl border border-dashed border-border bg-card p-8 text-center"
           >
-            <div className="mx-auto mb-3 h-12 w-12 rounded-xl bg-secondary/60 grid place-items-center">
+            <div className="mx-auto mb-3 h-12 w-12 rounded-lg bg-secondary grid place-items-center">
               <Icon className="h-6 w-6 text-muted-foreground" />
             </div>
             <p className="text-base font-semibold text-foreground">Module coming next</p>
