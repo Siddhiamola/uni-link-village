@@ -795,6 +795,22 @@ function HostelHub() {
             <Utensils className="h-5 w-5 text-primary" />
             <h3 className="font-semibold text-foreground">Today's Mess Menu</h3>
           </div>
+          <div className="mb-3 flex flex-wrap gap-1.5">
+            {HOSTELS.map((h) => (
+              <button
+                key={h}
+                onClick={() => setHostel(h)}
+                className={cn(
+                  "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all",
+                  hostel === h
+                    ? "border-primary bg-primary/15 text-primary"
+                    : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {h}
+              </button>
+            ))}
+          </div>
           <div className="flex flex-wrap gap-1.5 mb-4">
             {MESS_TABS.map((t) => (
               <button
@@ -812,7 +828,7 @@ function HostelHub() {
             ))}
           </div>
           <ul className="space-y-2">
-            {(MESS_MENU[messTab] ?? []).map((item) => (
+            {(MESS_MENU[hostel]?.[messTab] ?? []).map((item) => (
               <li
                 key={item.name}
                 className="flex items-center justify-between rounded-lg bg-background/40 border border-border px-3 py-2.5"
