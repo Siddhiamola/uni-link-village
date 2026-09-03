@@ -25,6 +25,15 @@ import {
   WashingMachine,
   CircleDot,
   Utensils,
+  BookOpen,
+  FileText,
+  Download,
+  QrCode,
+  MapPin,
+  Lightbulb,
+  CalendarCheck,
+  Gauge,
+  Trash2,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
@@ -257,6 +266,14 @@ function CampusOS() {
           <SmartTransport />
         ) : activeTab === "hostel" ? (
           <HostelHub />
+        ) : activeTab === "senior" ? (
+          <SeniorBridge />
+        ) : activeTab === "resource" ? (
+          <ResourceSharing />
+        ) : activeTab === "map" ? (
+          <CampusMap />
+        ) : activeTab === "risk" ? (
+          <RiskDetector />
         ) : (
           <PlaceholderModule tab={TABS.find((t) => t.id === activeTab)!} />
         )}
