@@ -34,6 +34,8 @@ import {
   CalendarCheck,
   Gauge,
   Trash2,
+  Bell,
+  Award,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
@@ -84,6 +86,7 @@ type Student = {
   phone: string;
   linkedin: string;
   github: string;
+  honor?: string;
 };
 
 const STUDENTS: Student[] = [
@@ -99,6 +102,7 @@ const STUDENTS: Student[] = [
     phone: "+91 98200 11234",
     linkedin: "in/aaravmehta",
     github: "@aaravmehta",
+    honor: "SIH Finalist",
   },
   {
     id: 2,
@@ -112,6 +116,7 @@ const STUDENTS: Student[] = [
     phone: "+91 98765 43210",
     linkedin: "in/diyasharma",
     github: "@diyasharma",
+    honor: "SIH Finalist",
   },
   {
     id: 3,
@@ -253,6 +258,33 @@ function CampusOS() {
 
       {/* Main content */}
       <main className="flex-1 min-w-0 overflow-y-auto">
+        {/* Top portal navbar */}
+        <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-background/80 backdrop-blur-md px-6 py-3">
+          <div>
+            <h1 className="text-sm font-bold tracking-tight text-foreground">
+              CampusOS <span className="text-muted-foreground font-medium">• Tech Institute Portal</span>
+            </h1>
+            <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <MapPin className="h-3 w-3" />
+              Campus: North Campus
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <Badge className="border bg-emerald/15 text-emerald border-emerald/30 hidden sm:inline-flex">
+              Semester: Odd 2025–26
+            </Badge>
+            <button
+              aria-label="Notifications"
+              className="relative h-9 w-9 rounded-lg border border-border bg-card/70 grid place-items-center text-muted-foreground transition-colors hover:text-foreground hover:border-primary/40"
+            >
+              <Bell className="h-4 w-4" />
+              <span className="absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[10px] font-bold text-destructive-foreground ring-2 ring-background">
+                2
+              </span>
+            </button>
+          </div>
+        </header>
+
         {activeTab === "collab" ? (
           <CollabFinder
             query={query}
@@ -451,6 +483,15 @@ function CollabFinder({
                 </div>
               </div>
 
+              {s.honor && (
+                <div className="mt-3">
+                  <Badge className="border bg-amber-400/15 text-amber-300 border-amber-400/30 gap-1">
+                    <Award className="h-3 w-3" />
+                    {s.honor}
+                  </Badge>
+                </div>
+              )}
+
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {s.skills.map((sk) => (
                   <Badge
@@ -612,33 +653,86 @@ function SmartTransport() {
   );
 }
 
-const MESS_MENU: Record<string, { name: string; desc: string }[]> = {
-  Breakfast: [
-    { name: "Aloo Paratha", desc: "with curd & pickle" },
-    { name: "Poha", desc: "garnished with sev" },
-    { name: "Boiled Eggs", desc: "2 per student" },
-    { name: "Tea / Coffee", desc: "filter coffee" },
-  ],
-  Lunch: [
-    { name: "Rajma Chawal", desc: "Punjabi style" },
-    { name: "Phulka", desc: "butter optional" },
-    { name: "Paneer Bhurji", desc: "with capsicum" },
-    { name: "Salad & Curd", desc: "seasonal" },
-    { name: "Gulab Jamun", desc: "dessert" },
-  ],
-  Snacks: [
-    { name: "Veg Sandwich", desc: "grilled" },
-    { name: "Samosa", desc: "with chutney" },
-    { name: "Masala Chai", desc: "cutting" },
-    { name: "Bhel Puri", desc: "Mumbai style" },
-  ],
-  Dinner: [
-    { name: "Chicken Curry", desc: "home style" },
-    { name: "Jeera Rice", desc: "with ghee" },
-    { name: "Dal Tadka", desc: "yellow dal" },
-    { name: "Roti", desc: "unlimited" },
-    { name: "Kheer", desc: "dessert" },
-  ],
+const HOSTELS = ["Ramanujan Hostel", "Block B Girls Hostel", "Aryabhata Hostel"];
+
+const MESS_MENU: Record<string, Record<string, { name: string; desc: string }[]>> = {
+  "Ramanujan Hostel": {
+    Breakfast: [
+      { name: "Aloo Paratha", desc: "with curd & pickle" },
+      { name: "Poha", desc: "garnished with sev" },
+      { name: "Boiled Eggs", desc: "2 per student" },
+      { name: "Tea / Coffee", desc: "filter coffee" },
+    ],
+    Lunch: [
+      { name: "Paneer Butter Masala", desc: "with tandoori roti" },
+      { name: "Dal Tadka", desc: "yellow dal, ghee tadka" },
+      { name: "Jeera Rice", desc: "steamed" },
+      { name: "Salad & Curd", desc: "seasonal" },
+      { name: "Gulab Jamun", desc: "dessert" },
+    ],
+    Snacks: [
+      { name: "Samosa", desc: "with imli chutney" },
+      { name: "Bread Pakora", desc: "mint chutney" },
+      { name: "Masala Chai", desc: "cutting" },
+      { name: "Bhel Puri", desc: "Mumbai style" },
+    ],
+    Dinner: [
+      { name: "Chole Bhature", desc: "with onion rings" },
+      { name: "Dal Fry", desc: "moong-masoor mix" },
+      { name: "Phulka", desc: "unlimited" },
+      { name: "Kheer", desc: "dessert" },
+    ],
+  },
+  "Block B Girls Hostel": {
+    Breakfast: [
+      { name: "Poha", desc: "with peanuts & lemon" },
+      { name: "Idli Sambhar", desc: "4 pieces" },
+      { name: "Banana", desc: "1 per student" },
+      { name: "Tea / Coffee", desc: "filter coffee" },
+    ],
+    Lunch: [
+      { name: "Rajma Chawal", desc: "Punjabi style" },
+      { name: "Phulka", desc: "butter optional" },
+      { name: "Aloo Gobi", desc: "dry sabzi" },
+      { name: "Salad & Curd", desc: "seasonal" },
+    ],
+    Snacks: [
+      { name: "Veg Sandwich", desc: "grilled" },
+      { name: "Maggi", desc: "masala" },
+      { name: "Masala Chai", desc: "cutting" },
+    ],
+    Dinner: [
+      { name: "Paneer Butter Masala", desc: "with naan" },
+      { name: "Dal Tadka", desc: "yellow dal" },
+      { name: "Steamed Rice", desc: "with ghee" },
+      { name: "Roti", desc: "unlimited" },
+    ],
+  },
+  "Aryabhata Hostel": {
+    Breakfast: [
+      { name: "Aloo Paratha", desc: "with white butter" },
+      { name: "Upma", desc: "with coconut chutney" },
+      { name: "Sprouts", desc: "protein bowl" },
+      { name: "Tea / Coffee", desc: "filter coffee" },
+    ],
+    Lunch: [
+      { name: "Chicken Curry", desc: "home style" },
+      { name: "Dal Tadka", desc: "yellow dal" },
+      { name: "Jeera Rice", desc: "with ghee" },
+      { name: "Roti", desc: "unlimited" },
+    ],
+    Snacks: [
+      { name: "Veg Cutlet", desc: "with ketchup" },
+      { name: "Samosa", desc: "with chutney" },
+      { name: "Cold Coffee", desc: "summer special" },
+    ],
+    Dinner: [
+      { name: "Veg Biryani", desc: "with raita" },
+      { name: "Paneer Butter Masala", desc: "rich gravy" },
+      { name: "Phulka", desc: "unlimited" },
+      { name: "Ice Cream", desc: "vanilla cup" },
+    ],
+  },
 };
 
 const MESS_TABS = ["Breakfast", "Lunch", "Snacks", "Dinner"];
@@ -650,12 +744,14 @@ const ISSUE_CATEGORIES = [
   { value: "Laundry", icon: WashingMachine },
 ];
 
-const SEED_COMPLAINTS: { id: number; category: string; detail: string; status: "Open" | "In Progress"; time: string }[] = [
-  { id: 101, category: "Water", detail: "No hot water in B-204 since morning", status: "In Progress", time: "2h ago" },
-  { id: 100, category: "Cleaning", detail: "Bathroom on 3rd floor not cleaned", status: "Open", time: "5h ago" },
+const SEED_COMPLAINTS: { id: number; category: string; detail: string; status: "Open" | "In Progress" | "Resolved"; time: string }[] = [
+  { id: 101, category: "Water", detail: "No hot water in Ramanujan B-204 since morning", status: "In Progress", time: "2h ago" },
+  { id: 100, category: "Cleaning", detail: "Bathroom on Block B 3rd floor not cleaned", status: "Open", time: "5h ago" },
+  { id: 99, category: "Electricity", detail: "Flickering tube light in Aryabhata corridor", status: "Resolved", time: "1d ago" },
 ];
 
 function HostelHub() {
+  const [hostel, setHostel] = useState(HOSTELS[0]!);
   const [messTab, setMessTab] = useState("Breakfast");
   const [category, setCategory] = useState("Water");
   const [detail, setDetail] = useState("");
@@ -699,6 +795,22 @@ function HostelHub() {
             <Utensils className="h-5 w-5 text-primary" />
             <h3 className="font-semibold text-foreground">Today's Mess Menu</h3>
           </div>
+          <div className="mb-3 flex flex-wrap gap-1.5">
+            {HOSTELS.map((h) => (
+              <button
+                key={h}
+                onClick={() => setHostel(h)}
+                className={cn(
+                  "rounded-lg border px-3 py-1.5 text-xs font-medium transition-all",
+                  hostel === h
+                    ? "border-primary bg-primary/15 text-primary"
+                    : "border-border bg-secondary/40 text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {h}
+              </button>
+            ))}
+          </div>
           <div className="flex flex-wrap gap-1.5 mb-4">
             {MESS_TABS.map((t) => (
               <button
@@ -716,7 +828,7 @@ function HostelHub() {
             ))}
           </div>
           <ul className="space-y-2">
-            {(MESS_MENU[messTab] ?? []).map((item) => (
+            {(MESS_MENU[hostel]?.[messTab] ?? []).map((item) => (
               <li
                 key={item.name}
                 className="flex items-center justify-between rounded-lg bg-background/40 border border-border px-3 py-2.5"
