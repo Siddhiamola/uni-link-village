@@ -744,12 +744,14 @@ const ISSUE_CATEGORIES = [
   { value: "Laundry", icon: WashingMachine },
 ];
 
-const SEED_COMPLAINTS: { id: number; category: string; detail: string; status: "Open" | "In Progress"; time: string }[] = [
-  { id: 101, category: "Water", detail: "No hot water in B-204 since morning", status: "In Progress", time: "2h ago" },
-  { id: 100, category: "Cleaning", detail: "Bathroom on 3rd floor not cleaned", status: "Open", time: "5h ago" },
+const SEED_COMPLAINTS: { id: number; category: string; detail: string; status: "Open" | "In Progress" | "Resolved"; time: string }[] = [
+  { id: 101, category: "Water", detail: "No hot water in Ramanujan B-204 since morning", status: "In Progress", time: "2h ago" },
+  { id: 100, category: "Cleaning", detail: "Bathroom on Block B 3rd floor not cleaned", status: "Open", time: "5h ago" },
+  { id: 99, category: "Electricity", detail: "Flickering tube light in Aryabhata corridor", status: "Resolved", time: "1d ago" },
 ];
 
 function HostelHub() {
+  const [hostel, setHostel] = useState(HOSTELS[0]!);
   const [messTab, setMessTab] = useState("Breakfast");
   const [category, setCategory] = useState("Water");
   const [detail, setDetail] = useState("");
