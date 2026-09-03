@@ -17,6 +17,14 @@ import {
   Send,
   CheckCircle2,
   Clock,
+  AlertTriangle,
+  Megaphone,
+  Droplet,
+  Zap,
+  Sparkle,
+  WashingMachine,
+  CircleDot,
+  Utensils,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
