@@ -258,6 +258,33 @@ function CampusOS() {
 
       {/* Main content */}
       <main className="flex-1 min-w-0 overflow-y-auto">
+        {/* Top portal navbar */}
+        <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-background/80 backdrop-blur-md px-6 py-3">
+          <div>
+            <h1 className="text-sm font-bold tracking-tight text-foreground">
+              CampusOS <span className="text-muted-foreground font-medium">• Tech Institute Portal</span>
+            </h1>
+            <p className="flex items-center gap-1 text-[11px] text-muted-foreground">
+              <MapPin className="h-3 w-3" />
+              Campus: North Campus
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <Badge className="border bg-emerald/15 text-emerald border-emerald/30 hidden sm:inline-flex">
+              Semester: Odd 2025–26
+            </Badge>
+            <button
+              aria-label="Notifications"
+              className="relative h-9 w-9 rounded-lg border border-border bg-card/70 grid place-items-center text-muted-foreground transition-colors hover:text-foreground hover:border-primary/40"
+            >
+              <Bell className="h-4 w-4" />
+              <span className="absolute -top-1.5 -right-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-destructive px-1 text-[10px] font-bold text-destructive-foreground ring-2 ring-background">
+                2
+              </span>
+            </button>
+          </div>
+        </header>
+
         {activeTab === "collab" ? (
           <CollabFinder
             query={query}
