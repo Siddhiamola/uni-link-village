@@ -253,6 +253,10 @@ function CampusOS() {
             filtered={filtered}
             onConnect={handleConnect}
           />
+        ) : activeTab === "transport" ? (
+          <SmartTransport />
+        ) : activeTab === "hostel" ? (
+          <HostelHub />
         ) : (
           <PlaceholderModule tab={TABS.find((t) => t.id === activeTab)!} />
         )}
