@@ -43,12 +43,12 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CampusOS — Centralized Student Operations, Grievance Redressal & Peer Services" },
-      { name: "description", content: "CampusOS — Centralized Student Operations, Grievance Redressal & Peer Services." },
-      { property: "og:title", content: "CampusOS — Centralized Student Operations" },
+      { title: "CampusOS — Centralized Campus Operations System" },
+      { name: "description", content: "Centralized Student Operations, Grievance Redressal & Peer Services." },
+      { property: "og:title", content: "CampusOS — Centralized Campus Operations System" },
       { property: "og:description", content: "Centralized Student Operations, Grievance Redressal & Peer Services." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: CampusOS,
@@ -212,8 +212,8 @@ function CampusOS() {
       <aside className="w-64 shrink-0 border-r border-sidebar-border bg-sidebar flex flex-col">
         <div className="px-5 py-5 border-b border-sidebar-border">
           <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-lg bg-primary grid place-items-center">
-              <GraduationCap className="h-5 w-5 text-primary-foreground" />
+            <div className="h-9 w-9 rounded-lg bg-white border border-border grid place-items-center">
+              <GraduationCap className="h-5 w-5 text-primary" strokeWidth={1.75} />
             </div>
             <div>
               <h1 className="text-base font-bold tracking-tight text-foreground">
