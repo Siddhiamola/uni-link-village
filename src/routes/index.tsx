@@ -699,7 +699,7 @@ function HostelHub() {
             ))}
           </div>
           <ul className="space-y-2">
-            {MESS_MENU[messTab].map((item) => (
+            {(MESS_MENU[messTab] ?? []).map((item) => (
               <li
                 key={item.name}
                 className="flex items-center justify-between rounded-lg bg-background/40 border border-border px-3 py-2.5"
